@@ -17,14 +17,274 @@
 <img width="1822" height="975" alt="image" src="https://github.com/user-attachments/assets/a983393a-790f-4da6-b4db-fda3002a6b1b" />
 <img width="1813" height="962" alt="image" src="https://github.com/user-attachments/assets/919c490d-b1f1-4378-a505-8cae5ac92e8e" />
 
-<img width="697" height="336" alt="image" src="https://github.com/user-attachments/assets/8ce391ac-1070-45c4-9d50-bd52ea121d6a" />
-<img width="898" height="410" alt="image" src="https://github.com/user-attachments/assets/903db8e6-6918-41e5-85c4-179713aae659" />
-<img width="886" height="471" alt="image" src="https://github.com/user-attachments/assets/ee0662a4-2074-4f09-9e2f-023a77d7c05a" />
-<img width="931" height="487" alt="image" src="https://github.com/user-attachments/assets/243854da-4d0b-4039-9435-ac53c1bf08e3" />
-<img width="761" height="209" alt="image" src="https://github.com/user-attachments/assets/62043993-73fe-4f84-b261-494c7811db35" />
-<img width="998" height="476" alt="image" src="https://github.com/user-attachments/assets/0bec0163-e4c2-426b-a50e-009093a8ac18" />
-<img width="756" height="488" alt="image" src="https://github.com/user-attachments/assets/4d01b33f-7c72-4413-9ae9-91c1bb4396c2" />
-<img width="823" height="400" alt="image" src="https://github.com/user-attachments/assets/443b6061-098b-4313-9b94-53af7f5636e3" />
+```python
+# ============================================================
+# STEP 1: Install and import
+# ============================================================
+# pip install anthropic
+
+import anthropic
+import json
+import os
+
+
+# ============================================================
+# STEP 2: Create the client
+# ============================================================
+# Reads ANTHROPIC_API_KEY from environment automatically.
+# Never hardcode the key here.
+
+client = anthropic.Anthropic()
+
+
+# ============================================================
+# STEP 3: Define your tools
+# ============================================================
+#
+# Each tool has three required fields:
+#
+#   name        - what Claude calls it in tool_use blocks
+#   description - how Claude decides WHEN to use this tool
+#   input_schema - JSON Schema defining the tool's parameters
+#
+# ============================================================
+
+tools = [
+    {
+        "name": "lookup_order",
+
+        "description": (
+            "Look up an order by its order ID. "
+            "Returns current status, estimated delivery date, and carrier name. "
+            "Use this when the customer asks where their order is "
+            "or when it will arrive."
+        ),
+
+        "input_schema": {
+            "type": "object",
+
+            "properties": {
+                "order_id": {
+                    "type": "string",
+                    "description": "The numeric order ID (e.g. '4821')"
+                }
+            },
+
+            "required": ["order_id"]
+        }
+    }
+]
+
+
+# ============================================================
+# STEP 4: Implement the actual tools
+# ============================================================
+#
+# Claude CANNOT call these functions directly.
+#
+# Claude REQUESTS a tool call
+#       ↓
+# Your code executes the tool
+#       ↓
+# Your code returns the result to Claude
+#
+# This is a mock implementation.
+# In production, this would query a real database/API.
+#
+# ============================================================
+
+def execute_tool(tool_name: str, tool_input: dict) -> str:
+    """Run a tool and return its result as a JSON string."""
+
+    if tool_name == "lookup_order":
+
+        order_id = tool_input.get("order_id", "")
+
+        # Mock database lookup
+        mock_orders = {
+            "4821": {
+                "status": "shipped",
+                "eta": "March 30",
+                "carrier": "FedEx"
+            },
+
+            "9910": {
+                "status": "processing",
+                "eta": "April 2",
+                "carrier": "UPS"
+            },
+
+            "0042": {
+                "status": "delivered",
+                "eta": "March 25",
+                "carrier": "DHL"
+            }
+        }
+
+        if order_id in mock_orders:
+            return json.dumps(mock_orders[order_id])
+
+        else:
+            return json.dumps({
+                "error": f"Order {order_id} not found"
+            })
+
+    # Unknown tool - return an error result
+    # Never raise an exception here
+    return json.dumps({
+        "error": f"Unknown tool: {tool_name}"
+    })
+
+
+# ============================================================
+# STEP 5: Run the Claude agent
+# ============================================================
+
+def run_agent(user_message: str) -> str:
+
+    # Conversation history
+    messages = [
+        {
+            "role": "user",
+            "content": user_message
+        }
+    ]
+
+    # --------------------------------------------------------
+    # Agent loop
+    # --------------------------------------------------------
+    while True:
+
+        response = client.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=4096,
+            tools=tools,
+            messages=messages
+        )
+
+        # ====================================================
+        # EXIT CONDITION
+        # ====================================================
+        #
+        # stop_reason == "end_turn"
+        # means Claude is done.
+        #
+        # Extract the text and return it to the caller.
+        # This is the primary loop exit.
+        #
+        # ====================================================
+
+        if response.stop_reason == "end_turn":
+
+            for block in response.content:
+
+                if block.type == "text":
+                    return block.text
+
+            # end_turn with no text
+            # rare but possible
+            return ""
+
+        # ====================================================
+        # TOOL USE
+        # ====================================================
+        #
+        # stop_reason == "tool_use"
+        # means Claude wants to call one or more tools.
+        #
+        # We must:
+        #
+        # 1. Append Claude's response to history
+        # 2. Execute the requested tools
+        # 3. Append the tool results to history
+        # 4. Call Claude again
+        #
+        # ====================================================
+
+        if response.stop_reason == "tool_use":
+
+            # ------------------------------------------------
+            # APPEND 1:
+            # Claude's assistant message
+            #
+            # This saves Claude's tool request(s)
+            # into conversation history.
+            #
+            # MUST happen before tool results.
+            # ------------------------------------------------
+
+            messages.append({
+                "role": "assistant",
+                "content": response.content
+            })
+
+            # ------------------------------------------------
+            # Execute each tool Claude requested
+            # ------------------------------------------------
+
+            tool_results = []
+
+            for block in response.content:
+
+                if block.type == "tool_use":
+
+                    print(
+                        f"→ Calling tool: "
+                        f"{block.name}({block.input})"
+                    )
+
+                    result = execute_tool(
+                        block.name,
+                        block.input
+                    )
+
+                    print(f"→ Result: {result}")
+
+                    # ----------------------------------------
+                    # Create tool_result block
+                    # ----------------------------------------
+
+                    tool_results.append({
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": result
+                    })
+
+            # ------------------------------------------------
+            # APPEND 2:
+            # Tool results
+            #
+            # These are sent back as a user message.
+            # ------------------------------------------------
+
+            messages.append({
+                "role": "user",
+                "content": tool_results
+            })
+
+            # ------------------------------------------------
+            # Continue the loop.
+            #
+            # Claude will now see the tool result and can
+            # generate the final answer.
+            # ------------------------------------------------
+
+            continue
+
+
+# ============================================================
+# STEP 6: Test the agent
+# ============================================================
+
+if __name__ == "__main__":
+
+    user_message = input("You: ")
+
+    answer = run_agent(user_message)
+
+    print("\nClaude:")
+    print(answer)
+```
 
 <img width="1805" height="966" alt="image" src="https://github.com/user-attachments/assets/1b3f4eda-5f5d-4fa0-b953-28c20484fe5b" />
 <img width="1804" height="958" alt="image" src="https://github.com/user-attachments/assets/38a77381-48f6-48e9-8edc-6e710bce3064" />
