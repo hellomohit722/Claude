@@ -21,7 +21,6 @@
 # ============================================================
 # STEP 1: Install and import
 # ============================================================
-# pip install anthropic
 
 import anthropic
 import json
@@ -32,21 +31,16 @@ import os
 # STEP 2: Create the client
 # ============================================================
 # Reads ANTHROPIC_API_KEY from environment automatically.
-# Never hardcode the key here.
 
 client = anthropic.Anthropic()
-
 
 # ============================================================
 # STEP 3: Define your tools
 # ============================================================
-#
 # Each tool has three required fields:
-#
 #   name        - what Claude calls it in tool_use blocks
 #   description - how Claude decides WHEN to use this tool
 #   input_schema - JSON Schema defining the tool's parameters
-#
 # ============================================================
 
 tools = [
@@ -74,12 +68,9 @@ tools = [
         }
     }
 ]
-
-
 # ============================================================
 # STEP 4: Implement the actual tools
 # ============================================================
-#
 # Claude CANNOT call these functions directly.
 #
 # Claude REQUESTS a tool call
@@ -87,17 +78,12 @@ tools = [
 # Your code executes the tool
 #       ↓
 # Your code returns the result to Claude
-#
-# This is a mock implementation.
-# In production, this would query a real database/API.
-#
 # ============================================================
 
 def execute_tool(tool_name: str, tool_input: dict) -> str:
     """Run a tool and return its result as a JSON string."""
 
     if tool_name == "lookup_order":
-
         order_id = tool_input.get("order_id", "")
 
         # Mock database lookup
@@ -135,7 +121,6 @@ def execute_tool(tool_name: str, tool_input: dict) -> str:
         "error": f"Unknown tool: {tool_name}"
     })
 
-
 # ============================================================
 # STEP 5: Run the Claude agent
 # ============================================================
@@ -154,7 +139,6 @@ def run_agent(user_message: str) -> str:
     # Agent loop
     # --------------------------------------------------------
     while True:
-
         response = client.messages.create(
             model="claude-haiku-4-5",
             max_tokens=4096,
@@ -165,85 +149,52 @@ def run_agent(user_message: str) -> str:
         # ====================================================
         # EXIT CONDITION
         # ====================================================
-        #
         # stop_reason == "end_turn"
         # means Claude is done.
-        #
         # Extract the text and return it to the caller.
         # This is the primary loop exit.
-        #
         # ====================================================
 
         if response.stop_reason == "end_turn":
-
             for block in response.content:
-
                 if block.type == "text":
                     return block.text
-
-            # end_turn with no text
-            # rare but possible
             return ""
-
         # ====================================================
         # TOOL USE
         # ====================================================
-        #
         # stop_reason == "tool_use"
         # means Claude wants to call one or more tools.
-        #
         # We must:
-        #
         # 1. Append Claude's response to history
         # 2. Execute the requested tools
         # 3. Append the tool results to history
         # 4. Call Claude again
-        #
         # ====================================================
 
         if response.stop_reason == "tool_use":
-
             # ------------------------------------------------
             # APPEND 1:
-            # Claude's assistant message
-            #
-            # This saves Claude's tool request(s)
-            # into conversation history.
-            #
+            # Claude's assistant message This saves Claude's tool request(s) into conversation history.
             # MUST happen before tool results.
             # ------------------------------------------------
-
             messages.append({
                 "role": "assistant",
                 "content": response.content
             })
-
             # ------------------------------------------------
             # Execute each tool Claude requested
             # ------------------------------------------------
-
             tool_results = []
-
             for block in response.content:
-
                 if block.type == "tool_use":
-
-                    print(
-                        f"→ Calling tool: "
-                        f"{block.name}({block.input})"
-                    )
-
-                    result = execute_tool(
-                        block.name,
-                        block.input
-                    )
-
+                    print(f"→ Calling tool: " f"{block.name}({block.input})")
+                    result = execute_tool(block.name,block.input)
                     print(f"→ Result: {result}")
 
                     # ----------------------------------------
                     # Create tool_result block
                     # ----------------------------------------
-
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": block.id,
@@ -252,36 +203,25 @@ def run_agent(user_message: str) -> str:
 
             # ------------------------------------------------
             # APPEND 2:
-            # Tool results
-            #
-            # These are sent back as a user message.
+            # Tool results These are sent back as a user message.
             # ------------------------------------------------
 
             messages.append({
                 "role": "user",
                 "content": tool_results
             })
-
             # ------------------------------------------------
             # Continue the loop.
-            #
-            # Claude will now see the tool result and can
-            # generate the final answer.
+            # Claude will now see the tool result and can generate the final answer.
             # ------------------------------------------------
-
             continue
-
-
 # ============================================================
 # STEP 6: Test the agent
 # ============================================================
 
 if __name__ == "__main__":
-
     user_message = input("You: ")
-
     answer = run_agent(user_message)
-
     print("\nClaude:")
     print(answer)
 ```
@@ -307,8 +247,10 @@ if __name__ == "__main__":
 <img width="1785" height="980" alt="image" src="https://github.com/user-attachments/assets/2d0b7c32-7dba-4625-9f5f-a865b07bbd8a" />
 
 
+# Multi-Agent Systems & Coordinator Patterns
 
-
+<img width="1790" height="961" alt="image" src="https://github.com/user-attachments/assets/6a252bba-aa8c-486e-8a3a-46b501c64257" />
+<img width="1768" height="948" alt="image" src="https://github.com/user-attachments/assets/bf1451ce-a48b-4aad-90f8-e2745fe1e34e" />
 
 
 
