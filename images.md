@@ -251,6 +251,26 @@ if __name__ == "__main__":
 
 <img width="1790" height="961" alt="image" src="https://github.com/user-attachments/assets/6a252bba-aa8c-486e-8a3a-46b501c64257" />
 <img width="1768" height="948" alt="image" src="https://github.com/user-attachments/assets/bf1451ce-a48b-4aad-90f8-e2745fe1e34e" />
+<img width="1801" height="982" alt="image" src="https://github.com/user-attachments/assets/d735bef8-c2ef-4100-ba42-80f1fb5a2e5d" />
+<img width="1799" height="963" alt="image" src="https://github.com/user-attachments/assets/125e25b6-86df-4eb5-bcf2-2abb79c0950c" />
 
+- If you have to sponge an agent that subagent will be sponged as tool itself.
+- Claude SDK particularly defined whenever if are configuring a coordinator agent you add task to its allowed tools.
+- if the coordinator has to spawn a subagent it has to do a task tool call with a proper agent definition for each subagent.
+
+<img width="761" height="449" alt="image" src="https://github.com/user-attachments/assets/d937d36b-b31b-4f10-9971-9f1948ed0763" />
+<img width="738" height="442" alt="image" src="https://github.com/user-attachments/assets/e1887202-c13b-4bf3-baef-280c598571c2" />
+<img width="770" height="488" alt="image" src="https://github.com/user-attachments/assets/8118c27d-a604-427c-9758-c85140873609" />
+<img width="1774" height="961" alt="image" src="https://github.com/user-attachments/assets/b1349b55-918a-4969-a0d4-d3637a520f13" />
+<img width="1734" height="932" alt="image" src="https://github.com/user-attachments/assets/5f45dcc1-e9ef-4697-8a02-49bdca6e7510" />
+<img width="1750" height="968" alt="image" src="https://github.com/user-attachments/assets/58ebb8bc-a188-4b91-9393-8650d0530ca5" />
+
+- subagent starts with blank context
+
+<img width="1770" height="981" alt="image" src="https://github.com/user-attachments/assets/2bbefed3-789c-40cb-95b9-6ce39c7d45f6" />
+<img width="1233" height="674" alt="image" src="https://github.com/user-attachments/assets/fe429fdb-c7b2-4c00-8c25-9048017e4f8e" />
+<img width="1789" height="982" alt="image" src="https://github.com/user-attachments/assets/9d044fcd-5611-41b6-b769-7ecee5e03388" />
+<img width="1747" height="953" alt="image" src="https://github.com/user-attachments/assets/f5dee01d-2bfb-4e8a-bec7-1a036af7b9b5" />
+<img width="1167" height="632" alt="image" src="https://github.com/user-attachments/assets/b0ddea32-01ff-4358-bcd4-0e92833de599" />
 
 
