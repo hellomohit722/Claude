@@ -273,4 +273,9 @@ if __name__ == "__main__":
 <img width="1747" height="953" alt="image" src="https://github.com/user-attachments/assets/f5dee01d-2bfb-4e8a-bec7-1a036af7b9b5" />
 <img width="1167" height="632" alt="image" src="https://github.com/user-attachments/assets/b0ddea32-01ff-4358-bcd4-0e92833de599" />
 
+# Subagent Context Passing & Session Management
+
+<img width="1841" height="997" alt="image" src="https://github.com/user-attachments/assets/e0cb490e-51c6-4787-a588-fead2267d1d8" />
+<img width="1834" height="991" alt="image" src="https://github.com/user-attachments/assets/0c3f675e-78c0-4b93-91c8-ebafe9c28759" />
+<img width="1773" height="970" alt="image" src="https://github.com/user-attachments/assets/4f3a57f0-2f4b-499f-a489-dcf648499f20" />
 
