@@ -265,7 +265,8 @@ if __name__ == "__main__":
 <img width="1734" height="932" alt="image" src="https://github.com/user-attachments/assets/5f45dcc1-e9ef-4697-8a02-49bdca6e7510" />
 <img width="1750" height="968" alt="image" src="https://github.com/user-attachments/assets/58ebb8bc-a188-4b91-9393-8650d0530ca5" />
 
-- subagent starts with blank context
+- subagent starts with blank context, its entire world is what you put into the world.
+- It prevents from the context contamination and context loss
 
 <img width="1770" height="981" alt="image" src="https://github.com/user-attachments/assets/2bbefed3-789c-40cb-95b9-6ce39c7d45f6" />
 <img width="1233" height="674" alt="image" src="https://github.com/user-attachments/assets/fe429fdb-c7b2-4c00-8c25-9048017e4f8e" />
@@ -278,4 +279,43 @@ if __name__ == "__main__":
 <img width="1841" height="997" alt="image" src="https://github.com/user-attachments/assets/e0cb490e-51c6-4787-a588-fead2267d1d8" />
 <img width="1834" height="991" alt="image" src="https://github.com/user-attachments/assets/0c3f675e-78c0-4b93-91c8-ebafe9c28759" />
 <img width="1773" height="970" alt="image" src="https://github.com/user-attachments/assets/4f3a57f0-2f4b-499f-a489-dcf648499f20" />
+
+<img width="1210" height="441" alt="image" src="https://github.com/user-attachments/assets/15a5a986-798b-4437-8d27-bc6e9287a71f" />
+<img width="557" height="408" alt="image" src="https://github.com/user-attachments/assets/a678ad86-eaa6-485d-89cb-7b0d3b4607a2" />
+<img width="1813" height="991" alt="image" src="https://github.com/user-attachments/assets/4c952431-7664-4717-8e1a-3cdc2eace276" />
+
+<img width="1129" height="425" alt="image" src="https://github.com/user-attachments/assets/3ff010f9-eb07-46b8-a137-900cefca4a51" />
+<img width="1073" height="394" alt="image" src="https://github.com/user-attachments/assets/87229b88-fee5-4a85-807d-95f817caf89b" />
+<img width="465" height="86" alt="image" src="https://github.com/user-attachments/assets/153eda02-a7d6-4529-aff5-e66482f68e2e" />
+
+<img width="1807" height="1001" alt="image" src="https://github.com/user-attachments/assets/af06eac2-26f9-462e-9012-1b3b72a48e46" />
+<img width="873" height="369" alt="image" src="https://github.com/user-attachments/assets/f2c06f6f-7469-476e-bbe7-573c4b9194da" />
+
+<img width="1842" height="974" alt="image" src="https://github.com/user-attachments/assets/2a87894c-34c7-4699-82ef-bdf09617a38d" />
+
+<img width="863" height="319" alt="image" src="https://github.com/user-attachments/assets/c0ae9044-28ae-44bc-81fb-1263d318a78f" />
+<img width="910" height="479" alt="image" src="https://github.com/user-attachments/assets/ea2beea7-ed2f-4d45-834a-41620f4f970f" />
+
+- you resume when prior context is valid
+- Start fresh when your results are stale, you can give a summary what happened
+
+<img width="791" height="354" alt="image" src="https://github.com/user-attachments/assets/099e2598-73e6-4080-b159-554d50533f9c" />
+
+<img width="1779" height="973" alt="image" src="https://github.com/user-attachments/assets/27569b60-4a3a-45f0-a676-1c3fa5d44a32" />
+<img width="1815" height="984" alt="image" src="https://github.com/user-attachments/assets/5b8bb318-4147-4dff-b155-d0dd29f1fc73" />
+<img width="1852" height="1017" alt="image" src="https://github.com/user-attachments/assets/29cb34d7-50db-4404-b53f-5d0eab5aac80" />
+
+<img width="1750" height="913" alt="image" src="https://github.com/user-attachments/assets/71c9ee55-a475-41ed-8d25-f2daced8e50d" />
+<img width="970" height="669" alt="image" src="https://github.com/user-attachments/assets/b3c8d3d7-90ff-4e3d-a280-0b1d043394e1" />
+
+<img width="1236" height="658" alt="image" src="https://github.com/user-attachments/assets/5c550517-f310-4d4f-9595-d55e6e43c21b" />
+<img width="1229" height="649" alt="image" src="https://github.com/user-attachments/assets/a0369630-d59a-44a6-b0e3-24aa0dc2a871" />
+<img width="1191" height="645" alt="image" src="https://github.com/user-attachments/assets/0dba4521-e87b-4b85-af05-c7ef157b8944" />
+
+
+
+
+
+
+
 
