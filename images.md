@@ -313,6 +313,36 @@ if __name__ == "__main__":
 <img width="1191" height="645" alt="image" src="https://github.com/user-attachments/assets/0dba4521-e87b-4b85-af05-c7ef157b8944" />
 
 
+ 
+<img width="1783" height="1010" alt="image" src="https://github.com/user-attachments/assets/ce3fc463-9fde-4f8d-9d1e-ff27703bae51" />
+
+# PreToolUse, PostToolUse Hooks & Task Decomposition
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
