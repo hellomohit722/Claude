@@ -335,8 +335,19 @@ if __name__ == "__main__":
 <img width="1823" height="1029" alt="image" src="https://github.com/user-attachments/assets/1e7a827d-cc44-4e20-9e1b-ae8ee0c89714" />
 <img width="1851" height="1000" alt="image" src="https://github.com/user-attachments/assets/8baec67d-2fc5-4e55-bd49-dcb4ccdaa7b6" />
 
+ # Agent Error Handling & tool_choice
  
- 
+<img width="1840" height="1029" alt="image" src="https://github.com/user-attachments/assets/bf13e92a-5419-4d02-a2fb-6e2b4a9d41ab" />
+<img width="1841" height="1028" alt="image" src="https://github.com/user-attachments/assets/d05a5fe5-11f0-4a0d-bf13-914b1e1af752" />
+<img width="1854" height="1038" alt="image" src="https://github.com/user-attachments/assets/8750e690-1fa3-44f3-92d7-c2f24509a5b5" />
+<img width="1852" height="994" alt="image" src="https://github.com/user-attachments/assets/4358858a-8c1c-4972-9108-97abac6dc92c" />
+<img width="1807" height="925" alt="image" src="https://github.com/user-attachments/assets/61c5d88e-f558-4c0d-94f2-5ee53fe5c08c" />
+<img width="1816" height="977" alt="image" src="https://github.com/user-attachments/assets/14d088d3-24b0-4016-be6e-408a86fcaf68" />
+<img width="1855" height="1007" alt="image" src="https://github.com/user-attachments/assets/d876c310-3512-4cc3-b35c-e999f0427d0c" />
+<img width="1803" height="972" alt="image" src="https://github.com/user-attachments/assets/62ed574d-467e-4aa1-85d7-c2996111c271" />
+<img width="1816" height="982" alt="image" src="https://github.com/user-attachments/assets/fbe92690-4caa-4fb9-b0f6-6440d6a0828b" />
+<img width="1836" height="980" alt="image" src="https://github.com/user-attachments/assets/2a730376-197c-4d23-87e3-c3a2bc134962" />
+<img width="1725" height="830" alt="image" src="https://github.com/user-attachments/assets/c8b4b76b-0829-4738-8f84-17416147b293" />
 
 
 
