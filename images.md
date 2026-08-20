@@ -349,11 +349,18 @@ if __name__ == "__main__":
 <img width="1836" height="980" alt="image" src="https://github.com/user-attachments/assets/2a730376-197c-4d23-87e3-c3a2bc134962" />
 <img width="1725" height="830" alt="image" src="https://github.com/user-attachments/assets/c8b4b76b-0829-4738-8f84-17416147b293" />
 
+# MCP Servers, Config, Cline & More
 
+<img width="1803" height="946" alt="image" src="https://github.com/user-attachments/assets/8022e796-7f3e-42d7-9d60-f3beebdfeaca" />
 
+- Every Agents needs tool.
+- We have build the tools inside the agents its self now agent one need that tool so it become diffecult because of that method defination is for that agent.
+- We want freedom for the agent as much as possible. They are intelligent so they discive easy thats why MCP comes.
+- Model Context Protocal is a protocal which agents and others AI application which can use to discover tools and meta data information.
 
-
-
+<img width="1485" height="925" alt="image" src="https://github.com/user-attachments/assets/e64848a5-a73d-4e2b-93d5-47679f4968d7" />
+<img width="1639" height="776" alt="image" src="https://github.com/user-attachments/assets/c27004ad-ac8c-4fb9-b68a-1dde3c471f0c" />
+<img width="1824" height="858" alt="image" src="https://github.com/user-attachments/assets/2e86519a-1519-4ad2-95c3-3d4141061bc5" />
 
 
 
