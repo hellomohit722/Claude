@@ -366,7 +366,7 @@ if __name__ == "__main__":
 - we need client to communicate with the MCP server and that is inside the agent that is SDK
 
 <img width="1846" height="880" alt="image" src="https://github.com/user-attachments/assets/b8ab780e-8cf9-41d1-9b2e-65a66c94f4a3" />
-
+ 
 1. The Host(Agent) connects to the MCP server (STDIOA/StreamableHTTP) {MCP is a contract like how Agents communicate with each other}
 2. Now client and server initialize the session and negociate capabilities (MCP is statefull). (you will get session ID from the MCP server for further request)
 3. tool/list will list down all the tool available in MCP server (Wrap the API in the MCP server)
@@ -379,7 +379,11 @@ if __name__ == "__main__":
 
 - If API contract change then you need to change in the MCP server only.
 
-
+<img width="1279" height="719" alt="image" src="https://github.com/user-attachments/assets/bbefa67f-d4ea-4721-8cba-119b7799ada4" />
+<img width="1296" height="653" alt="image" src="https://github.com/user-attachments/assets/73d7f636-3661-48c3-a1e7-619f8cae1686" />
+<img width="1308" height="711" alt="image" src="https://github.com/user-attachments/assets/eb86d56b-da79-4ed2-87f4-a4457200af8e" />
+<img width="1259" height="601" alt="image" src="https://github.com/user-attachments/assets/99a2dbc7-ae77-4237-81aa-b16201dca4aa" />
+<img width="1271" height="716" alt="image" src="https://github.com/user-attachments/assets/95ceaad4-3489-43b7-99eb-4ece017d2bbb" />
 
 
 
